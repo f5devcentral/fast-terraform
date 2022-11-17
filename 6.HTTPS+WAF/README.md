@@ -164,7 +164,7 @@ resource "bigip_ltm_pool" "pool_restricted" {
 }
 
 module "consolidated_vips" {
-  source = "github.com/fchmainy/waf_modules//multiple_waf_policies?ref=v1.0.8"
+  source = "github.com/f5devcentral/fast-terraform//multiple_waf_policies?ref=v1.0.0"
   providers = {
     bigip = bigip
   }
