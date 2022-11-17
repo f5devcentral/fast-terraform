@@ -96,7 +96,7 @@ resource "bigip_waf_policy" "app1_waf_v2" {
 }
 
 module "canary_app1" {
-  source = "github.com/fchmainy/waf_modules//canary_policy_header?ref=v1.0.8"
+  source = "github.com/f5devcentral/fast-terraform//canary_policy_header?ref=v1.0.0"
   providers = {
     bigip = bigip
   }
