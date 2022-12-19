@@ -190,8 +190,7 @@ module "consolidated_vips" {
       pool_name = bigip_ltm_pool.pool_restricted.name
   }]
   default_policy = bigip_waf_policy.default.name
-  depends_on     = [bigip_waf_policy.app1, bigip_waf_policy.app2, bigip_waf_policy.restricted, bigip_waf_pol
-icy.default]
+  depends_on     = [bigip_waf_policy.app1, bigip_waf_policy.app2, bigip_waf_policy.restricted, bigip_waf_policy.default]
 }
 
 resource "bigip_fast_https_app" "this" {
@@ -208,8 +207,7 @@ resource "bigip_fast_https_app" "this" {
   snat_pool_address     = ["10.1.10.50", "10.1.10.51", "10.1.10.52"]
   endpoint_ltm_policy   = ["${module.consolidated_vips.ltmPolicyName}"]
   security_log_profiles = ["/Common/Log all requests"]
-  depends_on            = [bigip_waf_policy.app1, bigip_waf_policy.app2, bigip_waf_policy.restricted, bigip_
-waf_policy.default, module.consolidated_vips.ltmPolicyName]
+  depends_on            = [bigip_waf_policy.app1, bigip_waf_policy.app2, bigip_waf_policy.restricted, bigip_waf_policy.default, module.consolidated_vips.ltmPolicyName]
 }
 ```
 
