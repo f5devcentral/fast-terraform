@@ -94,12 +94,10 @@ resource "bigip_fast_https_app" "this" {
   snat_pool_address = ["10.1.10.50", "10.1.10.51", "10.1.10.52"]
   load_balancing_mode       = "least-connections-member"
   monitor       {
-    send_string               = "GET / HTTP/1.1\\r\\nHost: example.com\\r\\nConn
-ection: Close\\r\\n\\r\\n"
+    send_string               = "GET / HTTP/1.1\\r\\nHost: example.com\\r\\nConnection: Close\\r\\n\\r\\n"
     response                  = "200 OK"
   }
-  depends_on		      = [bigip_ssl_certificate.app4crt, bigip_ssl_key.ap
-p4key]
+  depends_on		      = [bigip_ssl_certificate.app4crt, bigip_ssl_key.app4key]
 }
 ```
 
