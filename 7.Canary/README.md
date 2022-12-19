@@ -127,8 +127,7 @@ resource "bigip_fast_https_app" "this" {
   snat_pool_address     = ["10.1.10.50", "10.1.10.51", "10.1.10.52"]
   endpoint_ltm_policy   = ["${module.canary_app1.ltmPolicyName}"]
   security_log_profiles = ["/Common/Log all requests"]
-  depends_on            = [bigip_waf_policy.app1_waf_v1, bigip_waf_policy.app1_waf_v2, module.canary_app1.lt
-mPolicyName]
+  depends_on            = [bigip_waf_policy.app1_waf_v1, bigip_waf_policy.app1_waf_v2, module.canary_app1.ltmPolicyName]
 }
 ```
 
